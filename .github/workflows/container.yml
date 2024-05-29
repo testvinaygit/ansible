@@ -33,4 +33,5 @@ jobs:
       env:
        ANSIBLE_HOST_KEY_CHECKING: 'false'
       run: |
-        ansible-playbook /opt/container.yml
+        ansible-playbook/opt/container.yml
+
