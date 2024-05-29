@@ -25,7 +25,7 @@ jobs:
         pip install ansible
 
     - name: Copy SSH key to the runner
-      uses: eval $(ssh-agent -s)
+  
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
