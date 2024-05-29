@@ -33,5 +33,6 @@ jobs:
       env:
        ANSIBLE_HOST_KEY_CHECKING: 'false'
       run: |
-        ansible-playbook/opt/container.yml
+        ansible-playbook -i /opt/13.229.155.134/ container.yml
+
 
