@@ -33,4 +33,4 @@ jobs:
       env:
        ANSIBLE_HOST_KEY_CHECKING: 'false'
       run: |
-        ansible-playbook -i "13.229.155.134" -u ubuntu create_container.yml
+        ansible-playbook -i "13.229.155.134" -u ubuntu container.yml
