@@ -1,4 +1,5 @@
-name: Create Docker Container
+
+name: Deploy Docker Container
 
 on:
   push:
@@ -6,7 +7,7 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,10 +24,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install ansible
 
-    - name: Install Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
+    - name: Copy SSH key to the runner
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Run Ansible Playbook
-      run: /opt/ ansible-playbook create_container.yml
+      env:
+      ANSIBLE_HOST_KEY_CHECKING: 'false'
+      run: |
+        ansible-playbook -i "13.212.47.145," -u ubuntu create_container.yml
